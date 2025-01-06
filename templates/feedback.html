@@ -1,0 +1,931 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Feedback Form</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+        }
+
+        .container {
+            display: flex;
+            border: solid 1px black;
+            padding: 10px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+            max-width: 600px;
+            height: 200px;
+        }
+
+        .logo {
+            border-right: solid 1px black;
+            padding-right: 10px;
+            align-items: center;
+        }
+
+        .logo img {
+            max-width: 100%;
+            height: 150px;
+        }
+
+        form {
+            width: 40%;
+            margin: 20px auto;
+            padding: 1em;
+            background: #f9f9f9;
+            border: 1px solid #ccc;
+            border-radius: 1em;
+        }
+
+        form h2 {
+            text-align: center;
+        }
+
+        .feedback-table {
+            width: 40%;
+            /* max-width: 100%; */
+            border-collapse: collapse;
+            margin: 20px 0;
+            /* align-content: center; */
+            /* width: max-content; */
+        }
+
+        .feedback-table th, .feedback-table td {
+            border: 1px solid #ccc;
+            text-align: left;
+            padding: 8px;
+            width:50%
+        }
+
+        .feedback-table th {
+            background-color: #f2f2f2;
+            /* width: 40%; */
+        }
+
+        .rating-options {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .rating-options input {
+            margin-right: 5px;
+            
+        }
+
+        textarea {
+            width: 100%;
+            padding: 0.5em;
+            margin-top: 0.5em;
+            height: 50px;
+        }
+
+        button {
+            width: 100%;
+            padding: 0.7em;
+            margin-top: 1em;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 0.3em;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 1em;
+            color: #007BFF;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="https://image3.mouthshut.com/images/imagesp/925716582s.png" alt="SRK Institute of Technology Logo" />
+        </div>
+        <div class="info">
+            <p style="text-align: center; font-size: 23px; font-weight: bold; font-family: Arial, Helvetica, sans-serif;">SRK INSTITUTE OF TECHNOLOGY</p>
+            <p style="text-align: center;">Enikepadu, Vijayawada 521108</p>
+            <h3 style="text-align: center;">Department of INFORMATION TECHNOLOGY</h3>
+            <h3 style="text-align: center;">Students Feedback on Curriculum</h3>
+        </div>
+    </div>
+
+    <form action="{{ url_for('feedback') }}" method="post">
+        <h2>Feedback Form</h2>
+<!-- 
+        <form action="{{ url_for('feedback') }}" method="post">
+            <h2>Feedback Form</h2>
+        
+            <!-- First row: Year and Semester -->
+            <!-- <div style="display: flex; justify-content: space-between; margin-bottom: 1em;"> 
+                <div style="width: 48%;">
+                    <label for="year">Year:</label>
+                    <select id="year" name="year" required onchange="updateSubjects()" style="width: 100%; padding: 5px;">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+                </div>
+                <div style="width: 48%;">
+                    <label for="semester">Semester:</label>
+                    <select id="semester" name="semester" required onchange="updateSubjects()" style="width: 100%; padding: 5px;">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                    </select>
+                </div>
+            </div>
+        
+            <!-- Second row: Subject and Faculty 
+            <div style="display: flex; justify-content: space-between; margin-bottom: 1em;">
+                <div style="width: 48%;">
+                    <label for="subject_name">Subject:</label>
+                    <select id="subject_name" name="subject_name" required style="width: 100%; padding: 5px;">
+                        <!-- Options will be populated by JavaScript 
+                    </select>
+                </div>
+                <div style="width: 48%;">
+                    <label for="faculty_name">Faculty:</label>
+                    <select id="faculty_name" name="faculty_name" required style="width: 100%; padding: 5px;">
+                        {% for fac in faculty %}
+                            <option value="{{ fac[0] }}">{{ fac[0] }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+        </form> -->
+        
+
+        <!-- <label for="year">Year:</label>
+        <select id="year" name="year" required onchange="updateSubjects()">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+        </select><br>
+  
+        <label for="semester">Semester:</label>
+        <select id="semester" name="semester" required onchange="updateSubjects()">
+            <option value="1">1</option>
+            <option value="2">2</option>
+        </select><br>
+        <label for="subject_name">Subject:</label>
+        <select id="subject_name" name="subject_name" required> -->
+             <!-- Options will be populated by JavaScript 
+         </select><br>  
+        <label for="faculty_name">Faculty:</label>
+        <select id="faculty_name" name="faculty_name" required>
+            {% for fac in faculty %}
+                <option value="{{ fac[0] }}">{{ fac[0] }}</option>
+            {% endfor %}
+        </select><br>
+
+        <p>Dear student, <br>Please rate the courses of the following attributes using a 5-point scale below:</p>
+
+        <table class="feedback-table">
+            <thead>
+                <tr>
+                    <th>Questions</th>
+                    <th>Rating (1-5)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1. Faculty comes to class on time</td>
+                    <td>
+                        <div class="rating-options">
+                            <label><input type="radio" name="question1" value="1">1</label>
+                            <label><input type="radio" name="question1" value="2">2</label>
+                            <label><input type="radio" name="question1" value="3">3</label>
+                            <label><input type="radio" name="question1" value="4">4</label>
+                            <label><input type="radio" name="question1" value="5">5</label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2. Faculty comes well prepared in the subject</td>
+                    <td>
+                        <div class="rating-options">
+                            <label><input type="radio" name="question2" value="1">1</label>
+                            <label><input type="radio" name="question2" value="2">2</label>
+                            <label><input type="radio" name="question2" value="3">3</label>
+                            <label><input type="radio" name="question2" value="4">4</label>
+                            <label><input type="radio" name="question2" value="5">5</label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>3. Faculty speaks clearly and audibly</td>
+                    <td>
+                        <div class="rating-options">
+                            <label><input type="radio" name="question3" value="1">1</label>
+                            <label><input type="radio" name="question3" value="2">2</label>
+                            <label><input type="radio" name="question3" value="3">3</label>
+                            <label><input type="radio" name="question3" value="4">4</label>
+                            <label><input type="radio" name="question3" value="5">5</label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>4. Faculty writes and draws legibly</td>
+                    <td>
+                        <div class="rating-options">
+                            <label><input type="radio" name="question4" value="1">1</label>
+                            <label><input type="radio" name="question4" value="2">2</label>
+                            <label><input type="radio" name="question4" value="3">3</label>
+                            <label><input type="radio" name="question4" value="4">4</label>
+                            <label><input type="radio" name="question4" value="5">5</label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>5. Faculty explains with examples clearly</td>
+                    <td>
+                        <div class="rating-options">
+                            <label><input type="radio" name="question5" value="1">1</label>
+                            <label><input type="radio" name="question5" value="2">2</label>
+                            <label><input type="radio" name="question5" value="3">3</label>
+                            <label><input type="radio" name="question5" value="4">4</label>
+                            <label><input type="radio" name="question5" value="5">5</label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>6. Faculty asks relevant questions for interaction</td>
+                    <td>
+                        <div class="rating-options">
+                            <label><input type="radio" name="question6" value="1">1</label>
+                            <label><input type="radio" name="question6" value="2">2</label>
+                            <label><input type="radio" name="question6" value="3">3</label>
+                            <label><input type="radio" name="question6" value="4">4</label>
+                            <label><input type="radio" name="question6" value="5">5</label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>7. Faculty is regular and maintains discipline</td>
+                    <td>
+                        <div class="rating-options">
+                            <label><input type="radio" name="question7" value="1">1</label>
+                            <label><input type="radio" name="question7" value="2">2</label>
+                            <label><input type="radio" name="question7" value="3">3</label>
+                            <label><input type="radio" name="question7" value="4">4</label>
+                            <label><input type="radio" name="question7" value="5">5</label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>8. Faculty covers the syllabus at appropriate pace</td>
+                    <td>
+                        <div class="rating-options">
+                            <label><input type="radio" name="question8" value="1">1</label>
+                            <label><input type="radio" name="question8" value="2">2</label>
+                            <label><input type="radio" name="question8" value="3">3</label>
+                            <label><input type="radio" name="question8" value="4">4</label>
+                            <label><input type="radio" name="question8" value="5">5</label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>9. Faculty communicates efficiently</td>
+                    <td>
+                        <div class="rating-options">
+                            <label><input type="radio" name="question9" value="1">1</label>
+                            <label><input type="radio" name="question9" value="2">2</label>
+                            <label><input type="radio" name="question9" value="3">3</label>
+                            <label><input type="radio" name="question9" value="4">4</label>
+                            <label><input type="radio" name="question9" value="5">5</label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>10. Faculty evaluates the scripts fair and impartially</td>
+                    <td>
+                        <div class="rating-options">
+                            <label><input type="radio" name="question10" value="1">1</label>
+                            <label><input type="radio" name="question10" value="2">2</label>
+                            <label><input type="radio" name="question10" value="3">3</label>
+                            <label><input type="radio" name="question10" value="4">4</label>
+                            <label><input type="radio" name="question10" value="5">5</label>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <label for="suggestions">Suggestions:</label>
+        <textarea id="suggestions" name="suggestions"></textarea><br>
+        <button type="submit">Submit</button>
+    </form>
+    <a href="{{ url_for('logout') }}">Logout</a>
+</body>
+</html> 
+
+ -->
+
+
+ <!-- <!DOCTYPE html>
+ <html>
+ <head>
+     <title>Feedback Form</title>
+     <style>
+         body {
+             font-family: Arial, sans-serif;
+             display: flex;
+             flex-direction: column;
+             align-items: center;
+             margin: 0;
+             background-color: #f4f4f4;
+         }
+ 
+         .container {
+             display: flex;
+             align-items: center;
+             border: 1px solid black;
+             padding: 20px;
+             background-color: #ffffff;
+             border-radius: 8px;
+             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+             margin: 20px auto;
+             max-width: 800px;
+         }
+ 
+         .logo {
+             border-right: 1px solid black;
+             padding-right: 20px;
+             margin-right: 20px;
+             display: flex;
+             align-items: center;
+         }
+ 
+         .logo img {
+             max-width: 150px;
+             height: auto;
+         }
+ 
+         .info {
+             text-align: center;
+         }
+ 
+         form {
+             width: 100%;
+             max-width: 600px;
+             margin: 20px auto;
+             padding: 20px;
+             background: #f9f9f9;
+             border: 1px solid #ccc;
+             border-radius: 8px;
+         }
+ 
+         form h2 {
+             text-align: center;
+             margin-bottom: 20px;
+         }
+ 
+         label {
+             display: block;
+             margin: 10px 0 5px;
+         }
+ 
+         select, textarea, button {
+             width: 100%;
+             padding: 10px;
+             margin-top: 5px;
+             border: 1px solid #ccc;
+             border-radius: 4px;
+         }
+ 
+         .feedback-table {
+             width: 100%;
+             border-collapse: collapse;
+             margin: 20px 0;
+         }
+ 
+         .feedback-table th, .feedback-table td {
+             border: 1px solid #ccc;
+             text-align: left;
+             padding: 10px;
+         }
+ 
+         .feedback-table th {
+             background-color: #f2f2f2;
+         }
+ 
+         .rating-options {
+             display: flex;
+             justify-content: space-around;
+         }
+ 
+         button {
+             background-color: #007BFF;
+             color: white;
+             font-size: 16px;
+             font-weight: bold;
+             cursor: pointer;
+             margin-top: 20px;
+         }
+ 
+         button:hover {
+             background-color: #0056b3;
+         }
+ 
+         a {
+             display: block;
+             text-align: center;
+             margin-top: 20px;
+             color: #007BFF;
+             text-decoration: none;
+         }
+ 
+         a:hover {
+             text-decoration: underline;
+         }
+     </style>
+ </head>
+ <body>
+     <div class="container">
+         <div class="logo">
+             <img src="https://image3.mouthshut.com/images/imagesp/925716582s.png" alt="SRK Institute of Technology Logo" />
+         </div>
+         <div class="info">
+             <p style="font-size: 23px; font-weight: bold;">SRK INSTITUTE OF TECHNOLOGY</p>
+             <p>Enikepadu, Vijayawada 521108</p>
+             <h3>Department of INFORMATION TECHNOLOGY</h3>
+             <h3>Students Feedback on Curriculum</h3>
+         </div>
+     </div>
+ 
+     <form action="/submit_feedback" method="post">
+         <h2>Feedback Form</h2>
+           <label for="year">Year:</label>
+        <select id="year" name="year" required onchange="updateSubjects()">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+        </select><br>
+  
+        <label for="semester">Semester:</label>
+        <select id="semester" name="semester" required onchange="updateSubjects()">
+            <option value="1">1</option>
+            <option value="2">2</option>
+        </select><br>
+        <label for="subject_name">Subject:</label>
+        <select id="subject_name" name="subject_name" required> 
+             <!--Options will be populated by JavaScript  -->
+         <!-- </select><br>  
+        <label for="faculty_name">Faculty:</label>
+        <select id="faculty_name" name="faculty_name" required>
+            {% for fac in faculty %}
+                <option value="{{ fac[0] }}">{{ fac[0] }}</option>
+            {% endfor %}
+        </select><br>
+
+        <p>Dear student,<br>Please rate the courses on the following attributes using a 5-point scale below:</p>
+ 
+         <table class="feedback-table">
+             <thead>
+                 <tr>
+                     <th>Questions</th>
+                     <th>Rating (1-5)</th>
+                 </tr>
+             </thead>
+             <tbody>
+                 <tr>
+                     <td>1. Faculty comes to class on time.</td>
+                     <td>
+                         <div class="rating-options">
+                             <label><input type="radio" name="question1" value="1" required> 1</label>
+                             <label><input type="radio" name="question1" value="2"> 2</label>
+                             <label><input type="radio" name="question1" value="3"> 3</label>
+                             <label><input type="radio" name="question1" value="4"> 4</label>
+                             <label><input type="radio" name="question1" value="5"> 5</label>
+                         </div>
+                     </td>
+                 </tr>
+                 <tr>
+                     <td>2. Faculty comes well prepared in the subject.</td>
+                     <td>
+                         <div class="rating-options">
+                             <label><input type="radio" name="question2" value="1" required> 1</label>
+                             <label><input type="radio" name="question2" value="2"> 2</label>
+                             <label><input type="radio" name="question2" value="3"> 3</label>
+                             <label><input type="radio" name="question2" value="4"> 4</label>
+                             <label><input type="radio" name="question2" value="5"> 5</label>
+                         </div>
+                     </td>
+                 </tr>
+                 <td>3. Faculty speaks clearly and audibly</td>
+                    <td>
+                        <div class="rating-options">
+                            <label><input type="radio" name="question3" value="1">1</label>
+                            <label><input type="radio" name="question3" value="2">2</label>
+                            <label><input type="radio" name="question3" value="3">3</label>
+                            <label><input type="radio" name="question3" value="4">4</label>
+                            <label><input type="radio" name="question3" value="5">5</label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>4. Faculty writes and draws legibly</td>
+                    <td>
+                        <div class="rating-options">
+                            <label><input type="radio" name="question4" value="1">1</label>
+                            <label><input type="radio" name="question4" value="2">2</label>
+                            <label><input type="radio" name="question4" value="3">3</label>
+                            <label><input type="radio" name="question4" value="4">4</label>
+                            <label><input type="radio" name="question4" value="5">5</label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>5. Faculty explains with examples clearly</td>
+                    <td>
+                        <div class="rating-options">
+                            <label><input type="radio" name="question5" value="1">1</label>
+                            <label><input type="radio" name="question5" value="2">2</label>
+                            <label><input type="radio" name="question5" value="3">3</label>
+                            <label><input type="radio" name="question5" value="4">4</label>
+                            <label><input type="radio" name="question5" value="5">5</label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>6. Faculty asks relevant questions for interaction</td>
+                    <td>
+                        <div class="rating-options">
+                            <label><input type="radio" name="question6" value="1">1</label>
+                            <label><input type="radio" name="question6" value="2">2</label>
+                            <label><input type="radio" name="question6" value="3">3</label>
+                            <label><input type="radio" name="question6" value="4">4</label>
+                            <label><input type="radio" name="question6" value="5">5</label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>7. Faculty is regular and maintains discipline</td>
+                    <td>
+                        <div class="rating-options">
+                            <label><input type="radio" name="question7" value="1">1</label>
+                            <label><input type="radio" name="question7" value="2">2</label>
+                            <label><input type="radio" name="question7" value="3">3</label>
+                            <label><input type="radio" name="question7" value="4">4</label>
+                            <label><input type="radio" name="question7" value="5">5</label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>8. Faculty covers the syllabus at appropriate pace</td>
+                    <td>
+                        <div class="rating-options">
+                            <label><input type="radio" name="question8" value="1">1</label>
+                            <label><input type="radio" name="question8" value="2">2</label>
+                            <label><input type="radio" name="question8" value="3">3</label>
+                            <label><input type="radio" name="question8" value="4">4</label>
+                            <label><input type="radio" name="question8" value="5">5</label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>9. Faculty communicates efficiently</td>
+                    <td>
+                        <div class="rating-options">
+                            <label><input type="radio" name="question9" value="1">1</label>
+                            <label><input type="radio" name="question9" value="2">2</label>
+                            <label><input type="radio" name="question9" value="3">3</label>
+                            <label><input type="radio" name="question9" value="4">4</label>
+                            <label><input type="radio" name="question9" value="5">5</label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                 <tr>
+                     <td>10. Faculty evaluates the scripts fairly and impartially.</td>
+                     <td>
+                         <div class="rating-options">
+                             <label><input type="radio" name="question10" value="1" required> 1</label>
+                             <label><input type="radio" name="question10" value="2"> 2</label>
+                             <label><input type="radio" name="question10" value="3"> 3</label>
+                             <label><input type="radio" name="question10" value="4"> 4</label>
+                             <label><input type="radio" name="question10" value="5"> 5</label>
+                         </div>
+                     </td>
+                 </tr>
+             </tbody>
+         </table>
+ 
+         <label for="comments">Additional Comments (Optional):</label>
+         <textarea id="comments" name="comments" rows="4" placeholder="Write your comments here..."></textarea>
+ 
+         <button type="submit">Submit Feedback</button>
+     </form>
+ </body> -->
+ <!-- </html> -->
+
+
+ <!DOCTYPE html>
+ <html>
+ <head>
+     <title>Feedback Form</title>
+     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+     <script src="{{ url_for('static', filename='script.js') }}"></script>
+     <style>
+         body {
+             font-family: Arial, sans-serif;
+         }
+ 
+         .container {
+             display: flex;
+             border: solid 1px black;
+             padding: 10px;
+             background-color: #ffffff;
+             border-radius: 8px;
+             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+             margin: 20px auto;
+             max-width: 600px;
+             height: 200px;
+         }
+ 
+         .logo {
+             border-right: solid 1px black;
+             padding-right: 10px;
+             align-items: center;
+         }
+ 
+         .logo img {
+             max-width: 100%;
+             height: 150px;
+         }
+ 
+         form {
+             width: 40%;
+             margin: 20px auto;
+             padding: 1em;
+             background: #f9f9f9;
+             border: 1px solid #ccc;
+             border-radius: 1em;
+         }
+ 
+         form h2 {
+             text-align: center;
+         }
+ 
+         .feedback-table {
+             width: 100%;
+             border-collapse: collapse;
+             margin: 20px 0;
+         }
+ 
+         .feedback-table th, .feedback-table td {
+             border: 1px solid #ccc;
+             text-align: left;
+             padding: 8px;
+         }
+ 
+         .feedback-table th {
+             background-color: #f2f2f2;
+         }
+ 
+         .rating-options {
+             display: flex;
+             justify-content: space-around;
+         }
+ 
+         .rating-options input {
+             margin-right: 5px;
+             
+         }
+ 
+         textarea {
+             width: 100%;
+             padding: 0.5em;
+             margin-top: 0.5em;
+         }
+ 
+         button {
+             width: 100%;
+             padding: 0.7em;
+             margin-top: 1em;
+             background-color: #007BFF;
+             color: white;
+             border: none;
+             border-radius: 0.3em;
+         }
+ 
+         button:hover {
+             background-color: #0056b3;
+         }
+ 
+         a {
+             display: block;
+             text-align: center;
+             margin-top: 1em;
+             color: #007BFF;
+         }
+     </style>
+ </head>
+ <body>
+     <div class="container">
+         <div class="logo">
+             <img src="https://image3.mouthshut.com/images/imagesp/925716582s.png" alt="SRK Institute of Technology Logo" />
+         </div>
+         <div class="info">
+             <p style="text-align: center; font-size: 23px; font-weight: bold; font-family: Arial, Helvetica, sans-serif;">SRK INSTITUTE OF TECHNOLOGY</p>
+             <p style="text-align: center;">Enikepadu, Vijayawada 521108</p>
+             <h3 style="text-align: center;">Department of INFORMATION TECHNOLOGY</h3>
+             <h3 style="text-align: center;">Students Feedback on Curriculum</h3>
+         </div>
+     </div>
+ 
+     <form action="{{ url_for('feedback') }}" method="post">
+         <h2>Feedback Form</h2>
+         <!-- <label for="year">Year:</label>
+         <select id="year" name="year" required onchange="updateSubjects()">
+             <option value="1">1</option>
+             <option value="2">2</option>
+             <option value="3">3</option>
+             <option value="4">4</option>
+         </select><br> -->
+         <label for="year" style="margin-right: 10px;">Year:</label>
+     <select id="year" name="year" required onchange="updateSubjects()" style="padding: 5px; font-size: 14px;">
+     <option value="1">1</option>
+     <option value="2">2</option>
+     <option value="3">3</option>
+     <option value="4">4</option>
+ </select><br>
+         <label for="semester">Semester:</label>
+         <select id="semester" name="semester" required onchange="updateSubjects()">
+             <option value="1">1</option>
+             <option value="2">2</option>
+         </select><br>
+         <label for="subject_name">Subject:</label>
+         <select id="subject_name" name="subject_name" required>
+              <!-- Options will be populated by JavaScript -->
+         </select><br> 
+         <label for="faculty_name">Faculty:</label>
+         <select id="faculty_name" name="faculty_name" required>
+             {% for fac in faculty %}
+                 <option value="{{ fac[0] }}">{{ fac[0] }}</option>
+             {% endfor %}
+         </select><br>
+
+         <!-- <label for="date">Date:</label>
+         <input type="date" id="date" name="feedback_date" required style="padding: 5px; font-size: 14px;">
+         <br>
+
+         <script>
+            // Set the current date as the default value for the date input
+            document.getElementById('date').value = new Date().toISOString().split('T')[0];
+        </script> -->
+ 
+         <p>Dear student, <br>Please rate the courses of the following attributes using a 5-point scale below:</p>
+ 
+         <table class="feedback-table">
+             <thead>
+                 <tr>
+                     <th>Questions</th>
+                     <th>Rating (1-5)</th>
+                 </tr>
+             </thead>
+             <tbody>
+                 <tr>
+                     <td>1. Faculty comes to class on time</td>
+                     <td>
+                         <div class="rating-options">
+                             <label><input type="radio" name="question1" value="1">1</label>
+                             <label><input type="radio" name="question1" value="2">2</label>
+                             <label><input type="radio" name="question1" value="3">3</label>
+                             <label><input type="radio" name="question1" value="4">4</label>
+                             <label><input type="radio" name="question1" value="5">5</label>
+                         </div>
+                     </td>
+                 </tr>
+                 <tr>
+                     <td>2. Faculty comes well prepared in the subject</td>
+                     <td>
+                         <div class="rating-options">
+                             <label><input type="radio" name="question2" value="1">1</label>
+                             <label><input type="radio" name="question2" value="2">2</label>
+                             <label><input type="radio" name="question2" value="3">3</label>
+                             <label><input type="radio" name="question2" value="4">4</label>
+                             <label><input type="radio" name="question2" value="5">5</label>
+                         </div>
+                     </td>
+                 </tr>
+                 <tr>
+                     <td>3. Faculty speaks clearly and audibly</td>
+                     <td>
+                         <div class="rating-options">
+                             <label><input type="radio" name="question3" value="1">1</label>
+                             <label><input type="radio" name="question3" value="2">2</label>
+                             <label><input type="radio" name="question3" value="3">3</label>
+                             <label><input type="radio" name="question3" value="4">4</label>
+                             <label><input type="radio" name="question3" value="5">5</label>
+                         </div>
+                     </td>
+                 </tr>
+                 <tr>
+                     <td>4. Faculty writes and draws legibly</td>
+                     <td>
+                         <div class="rating-options">
+                             <label><input type="radio" name="question4" value="1">1</label>
+                             <label><input type="radio" name="question4" value="2">2</label>
+                             <label><input type="radio" name="question4" value="3">3</label>
+                             <label><input type="radio" name="question4" value="4">4</label>
+                             <label><input type="radio" name="question4" value="5">5</label>
+                         </div>
+                     </td>
+                 </tr>
+                 <tr>
+                     <td>5. Faculty explains with examples clearly</td>
+                     <td>
+                         <div class="rating-options">
+                             <label><input type="radio" name="question5" value="1">1</label>
+                             <label><input type="radio" name="question5" value="2">2</label>
+                             <label><input type="radio" name="question5" value="3">3</label>
+                             <label><input type="radio" name="question5" value="4">4</label>
+                             <label><input type="radio" name="question5" value="5">5</label>
+                         </div>
+                     </td>
+                 </tr>
+                 <tr>
+                     <td>6. Faculty asks relevant questions for interaction</td>
+                     <td>
+                         <div class="rating-options">
+                             <label><input type="radio" name="question6" value="1">1</label>
+                             <label><input type="radio" name="question6" value="2">2</label>
+                             <label><input type="radio" name="question6" value="3">3</label>
+                             <label><input type="radio" name="question6" value="4">4</label>
+                             <label><input type="radio" name="question6" value="5">5</label>
+                         </div>
+                     </td>
+                 </tr>
+                 <tr>
+                     <td>7. Faculty is regular and maintains discipline</td>
+                     <td>
+                         <div class="rating-options">
+                             <label><input type="radio" name="question7" value="1">1</label>
+                             <label><input type="radio" name="question7" value="2">2</label>
+                             <label><input type="radio" name="question7" value="3">3</label>
+                             <label><input type="radio" name="question7" value="4">4</label>
+                             <label><input type="radio" name="question7" value="5">5</label>
+                         </div>
+                     </td>
+                 </tr>
+                 <tr>
+                     <td>8. Faculty covers the syllabus at appropriate pace</td>
+                     <td>
+                         <div class="rating-options">
+                             <label><input type="radio" name="question8" value="1">1</label>
+                             <label><input type="radio" name="question8" value="2">2</label>
+                             <label><input type="radio" name="question8" value="3">3</label>
+                             <label><input type="radio" name="question8" value="4">4</label>
+                             <label><input type="radio" name="question8" value="5">5</label>
+                         </div>
+                     </td>
+                 </tr>
+                 <tr>
+                     <td>9. Faculty communicates efficiently</td>
+                     <td>
+                         <div class="rating-options">
+                             <label><input type="radio" name="question9" value="1">1</label>
+                             <label><input type="radio" name="question9" value="2">2</label>
+                             <label><input type="radio" name="question9" value="3">3</label>
+                             <label><input type="radio" name="question9" value="4">4</label>
+                             <label><input type="radio" name="question9" value="5">5</label>
+                         </div>
+                     </td>
+                 </tr>
+                 <tr>
+                     <td>10. Faculty evaluates the scripts fair and impartially</td>
+                     <td>
+                         <div class="rating-options">
+                             <label><input type="radio" name="question10" value="1">1</label>
+                             <label><input type="radio" name="question10" value="2">2</label>
+                             <label><input type="radio" name="question10" value="3">3</label>
+                             <label><input type="radio" name="question10" value="4">4</label>
+                             <label><input type="radio" name="question10" value="5">5</label>
+                         </div>
+                     </td>
+                 </tr>
+             </tbody>
+         </table>
+ 
+         <label for="suggestions">Suggestions:</label>
+         <textarea id="suggestions" name="suggestions"></textarea><br>
+         <button type="submit">Submit</button>
+     </form>
+     <a href="{{ url_for('logout') }}">Logout</a>
+ </body>
+ </html> 

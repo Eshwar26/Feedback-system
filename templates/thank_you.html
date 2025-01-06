@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Thank You</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h2>Thank you for your feedback!</h2>
+    <a href="{{ url_for('feedback') }}">Submit feedback for another subject</a>
+    <a href="{{ url_for('logout') }}">Logout</a>
+</body>
+</html>
